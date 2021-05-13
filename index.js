@@ -1,11 +1,10 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
 
 // Bring in GraphQL-Express middleware
-const { ApolloServer } = require("apollo-server-express");
+import { ApolloServer } from "apollo-server-express";
 
-const { typeDefs } = require("./schema");
-const { resolvers } = require("./resolvers");
+import { typeDefs } from "./schema.js";
+import { resolvers } from "./resolvers.js";
 
 async function startApolloServer() {
   const server = new ApolloServer({

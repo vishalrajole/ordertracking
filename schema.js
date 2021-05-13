@@ -1,39 +1,60 @@
-const { gql } = require("apollo-server-express");
+import { gql } from "apollo-server-express";
 
-exports.typeDefs = gql`
-  type Tracking {
-    orderNo: ID
-    tracking_number: String
-    courier: String
-    street: String
-    zip_code: String
-    city: String
-    destination_country_iso3: String
-    email: String
+const typeDefs = gql`
+  type DeliveryStatus {
+    status: String
+    status_text: String
+  }
+  type Articles {
     articleNo: String
     articleImageUrl: String
     quantity: String
     product_name: String
   }
 
-  type Checkpoint {
-    tracking_number: ID
-    location: String
-    timestamp: String
-    status: String
-    status_text: String
-    status_detail: String
+  type Tracking {
+    tracking_number: String
+    deliveryStatus: [DeliveryStatus]
+    articles: [Articles]
+  }
+  type Orders {
+    orderNo: ID
+    courier: String
+    street: String
+    zip_code: String
+    city: String
+    destination_country_iso3: String
+    email: String
+    trackings: Tracking
   }
 
   type User {
-    email: String!
+    email: String
+    token: String
   }
 
   type Query {
-    getAllTrackings: [Tracking]
-    getTracking(tracking_number: ID!): Tracking
+    getAllOrders(email: String): [Orders]
+  }
 
-    getAllCheckpoints: [Checkpoint]
-    getCheckpoint(tracking_number: ID!): Checkpoint
+  type Mutation {
+    login(email: String!): User
   }
 `;
+
+export { typeDefs };
+
+// type Tracking {
+//   orderNo: ID
+//   tracking_number: String
+//   courier: String
+//   street: String
+//   zip_code: String
+//   city: String
+//   destination_country_iso3: String
+//   email: String
+//   articleNo: String
+//   articleImageUrl: String
+//   quantity: String
+//   product_name: String
+// }

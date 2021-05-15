@@ -2,7 +2,6 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
 import { ThemeProvider } from "styled-components";
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
-import styled from "styled-components";
 
 import theme from "./styles/theme";
 import GlobalStyle from "./styles/normalize";

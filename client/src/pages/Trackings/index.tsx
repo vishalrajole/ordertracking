@@ -6,7 +6,6 @@ import Loading from "../../components/Loading";
 import Card from "../../components/Card";
 import { GridCol2 } from "./styles";
 import { GroupWrapper, Label, Value } from "../../styles/form";
-import { getByTitle } from "@testing-library/dom";
 
 interface TrackingInterface {
   orderNo: string;

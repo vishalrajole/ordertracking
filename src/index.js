@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
 // Bring in GraphQL-Express middleware
 import { ApolloServer } from "apollo-server-express";
 
@@ -14,12 +15,16 @@ async function startApolloServer() {
   await server.start();
 
   const app = express();
+  app.use(cors("*"));
   server.applyMiddleware({ app });
 
-  app.use(express.static("public"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "public", "index.html"));
-  });
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+  }
 
   await new Promise((resolve) =>
     app.listen({ port: process.env.PORT || 4000 }, resolve)

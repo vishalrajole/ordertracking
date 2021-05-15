@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+import { path, dirname } from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
 // Bring in GraphQL-Express middleware

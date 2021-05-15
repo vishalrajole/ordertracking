@@ -13,6 +13,9 @@ export const StyledInput = styled.input`
   }
   &:focus {
     border: none;
+    outline: none;
   }
+ 
+ 
 }
 `;

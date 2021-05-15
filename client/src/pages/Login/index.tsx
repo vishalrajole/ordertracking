@@ -1,18 +1,16 @@
 import { useState, FunctionComponent, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
-import { Form, Label } from "../../styles/form";
+import { Form, Label, ErrorText } from "../../styles/form";
+import EmailValidator from "../../utils/EmailValidator";
 import Card from "../../components/Card";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { LOGIN_MUTATION } from "./queries";
 
-//TODO not working
-const EMAIL_REGEX =
-  '/(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@[*[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+]*/';
-
 const Login: FunctionComponent = () => {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState<string | null>("");
   const [isDisabled, setIsDisabled] = useState(true);
   const history = useHistory();
 
@@ -33,10 +31,13 @@ const Login: FunctionComponent = () => {
     const {
       target: { value: email },
     } = e;
-    if (email.length === 0) {
+    const emailError = EmailValidator(email);
+    if (emailError) {
       setIsDisabled(true);
+      setError(emailError);
     } else {
       setIsDisabled(false);
+      setError(null);
     }
     setEmail(email);
   };
@@ -51,13 +52,13 @@ const Login: FunctionComponent = () => {
       <Form>
         <Label>Email</Label>
         <Input
-          type="email"
+          type="text"
           value={email}
           placeholder="Eg. test@gmail.com"
           onChange={onEmailChange}
           required={true}
-          pattern={EMAIL_REGEX}
         />
+        {error && <ErrorText>{error}</ErrorText>}
 
         <Button disabled={isDisabled} onClick={onSubmit}>
           Send

@@ -72,7 +72,7 @@ const Trackings = () => {
                   <Value> {tracking.orderNo}</Value>
                 </GroupWrapper>
                 <GroupWrapper>
-                  <Label>Curreny Status</Label>
+                  <Label>Current Status</Label>
                   <Value>
                     {tracking?.trackings?.deliveryStatus[0]?.status_text}
                   </Value>

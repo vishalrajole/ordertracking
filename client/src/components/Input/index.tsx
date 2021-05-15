@@ -9,14 +9,7 @@ type Props = {
   required?: boolean;
 };
 
-const Input = ({
-  placeholder,
-  type,
-  value,
-  required,
-  onChange,
-  ...rest
-}: Props) => {
+const Input = ({ placeholder, type, value, required, onChange }: Props) => {
   return (
     <StyledInput
       type={type}

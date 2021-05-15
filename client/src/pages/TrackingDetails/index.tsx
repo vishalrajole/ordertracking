@@ -70,7 +70,7 @@ const TrackingDetails = () => {
               <Label> Articles </Label>
 
               {articles.map((article: ArticleInterface) => (
-                <Article>
+                <Article key={article.articleNo}>
                   {article.quantity && (
                     <Quantity>{`x${article.quantity}`}</Quantity>
                   )}

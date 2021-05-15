@@ -19,3 +19,8 @@ export const GroupWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
 `;
+
+export const ErrorText = styled.p`
+  color: red;
+  margin: 0;
+`;

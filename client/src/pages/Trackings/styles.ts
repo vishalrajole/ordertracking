@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.main};
+export const GridCol2 = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;

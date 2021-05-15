@@ -1,11 +1,18 @@
 import neatCsv from "neat-csv";
 import { readFile } from "fs/promises";
-import { formatTrackings } from "./utils.js";
+
+import {
+  formatTrackings,
+  filterByEmail,
+  filterByTrackingNumber,
+} from "./utils.js";
 
 const resolvers = {
   Query: {
     getAllOrders: async (root, args, {}) => {
       try {
+        let filteredTrackings = [];
+        const { email, tracking_number } = args;
         const trackingsData = await readFile("../mocks/trackings.csv").catch(
           (err) => console.error("Failed to read file", err)
         );
@@ -19,8 +26,17 @@ const resolvers = {
 
         const formattedTrackings = formatTrackings(checkpoints, trackings);
 
-        console.log("formattedTrackings:: ", formattedTrackings);
-        return formattedTrackings;
+        // Note: since we are reading from csv, filtering data here. we can also execute, queries on db
+        if (email) {
+          filteredTrackings = filterByEmail(formattedTrackings, email);
+        } else if (tracking_number) {
+          filteredTrackings = filterByTrackingNumber(
+            formattedTrackings,
+            tracking_number
+          );
+        }
+
+        return filteredTrackings;
       } catch (error) {
         throw new Error("Something went wrong!");
       }

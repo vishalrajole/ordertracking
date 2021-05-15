@@ -15,32 +15,23 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.main};
-  display: flex;
-  align-items: center;
-  justify-contents: center;
-`;
-
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
           <GlobalStyle />
-          <Container>
-            <BrowserRouter>
-              <Switch>
-                <Route exact path="/" render={() => <Redirect to="/login" />} />
-                <Route path="/login" component={Login} />
-                <Route path="/trackings" component={Trackings} />
-                <Route
-                  path="/tracking-details/:trackingId"
-                  component={TrackingDetails}
-                />
-              </Switch>
-            </BrowserRouter>
-          </Container>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" render={() => <Redirect to="/login" />} />
+              <Route path="/login" component={Login} />
+              <Route path="/trackings" component={Trackings} />
+              <Route
+                path="/tracking-details/:tracking_number"
+                component={TrackingDetails}
+              />
+            </Switch>
+          </BrowserRouter>
         </ApolloProvider>
       </ThemeProvider>
     </>

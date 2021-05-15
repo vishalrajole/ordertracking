@@ -2,20 +2,20 @@
 
 - a website (frontend) that has 3 views
 
-  - [x] email address input form
+  - [x] email address input form (with email validation)
   - [x] order history view
   - [x] order history view
 
-- that upon entering a known email address of a user will present you with the order history related to that email address and allows you to view order details
+- upon entering a known email address of a user will present you with the order history related to that email address and allows you to view order details and navigate back
 
 - an API (backend)
-
+  - [x] server which serves order details from csv file
   - [x] that parses and processes the provided CSV files' content
-  - [x] that serves content to the frontend via created endpoint(s) in a format of your choice
+  - [x] that serves content to the frontend via created endpoint(s) in a format(GraphQL)
 
 # Tech stack
 
-- Frontend: React, typescript, styled-components
+- Frontend: React, typescript, styled-components, react-router
 - Backend: NodeJS, ExpressJS, GraphQL, Apollo Server, lodash
 
 # Installation steps:

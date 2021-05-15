@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 import cors from "cors";
 // Bring in GraphQL-Express middleware
 import { ApolloServer } from "apollo-server-express";
@@ -7,6 +8,7 @@ import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./schema.js";
 import { resolvers } from "./resolvers.js";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs,

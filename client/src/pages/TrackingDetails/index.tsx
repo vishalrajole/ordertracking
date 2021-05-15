@@ -4,7 +4,14 @@ import { useParams } from "react-router-dom";
 import { GET_ORDER_DETAILS } from "./queries";
 import Loading from "../../components/Loading";
 import Card from "../../components/Card";
-import { Image, Article, Quantity, ArticleInfo, ArticleNo } from "./style";
+import {
+  Image,
+  Article,
+  Quantity,
+  ArticleInfo,
+  ArticleNo,
+  SubText,
+} from "./style";
 import { GroupWrapper, Label, Value } from "../../styles/form";
 
 interface ArticleInterface {
@@ -20,12 +27,9 @@ interface RouteParams {
 const TrackingDetails = () => {
   let { tracking_number } = useParams<RouteParams>();
 
-  console.log("tracking_number: ", tracking_number);
   const { loading, error, data } = useQuery(GET_ORDER_DETAILS, {
     variables: { tracking_number },
   });
-
-  console.log("ida: ", data);
 
   const tracking = data?.getAllOrders[0];
   const articles = data?.getAllOrders[0].trackings?.articles;
@@ -49,7 +53,9 @@ const TrackingDetails = () => {
           <GroupWrapper>
             <Label>Delivery Address</Label>
             <Value>
-              {`${tracking.street} ${tracking.zip_code} ${tracking.city}`}
+              {`${tracking.street}`}
+              <br />
+              {`${tracking.zip_code} ${tracking.city}`}
             </Value>
           </GroupWrapper>
           <Card isSmall={true}>
@@ -62,7 +68,9 @@ const TrackingDetails = () => {
               <Value>
                 {tracking?.trackings?.deliveryStatus[0]?.status_text}
               </Value>
-              <p>{tracking?.trackings?.deliveryStatus[0]?.status_details}</p>
+              <SubText>
+                {tracking?.trackings?.deliveryStatus[0]?.status_details}
+              </SubText>
             </GroupWrapper>
           </Card>
           {articles.length && (

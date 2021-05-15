@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
     font-family: system-ui,-apple-system,"Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize};
   }
 
 `;

@@ -21,7 +21,7 @@ const Login: FunctionComponent = () => {
   useEffect(() => {
     if (result?.data) {
       const token = result.data.login.token;
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", token); // temporarily storing email into localstorage
       localStorage.setItem("email", email);
       history.push("/trackings");
     }

@@ -1,11 +1,22 @@
 # Order tracking
 
-App to track order status for delivery
+- a website (frontend) that has 3 views
+
+  - [x] email address input form
+  - [x] order history view
+  - [x] order history view
+
+- that upon entering a known email address of a user will present you with the order history related to that email address and allows you to view order details
+
+- an API (backend)
+
+  - [x] that parses and processes the provided CSV files' content
+  - [x] that serves content to the frontend via created endpoint(s) in a format of your choice
 
 # Tech stack
 
 - Frontend: React, typescript, styled-components
-- Backend: Node, Express, GraphQL, Apollo Server
+- Backend: NodeJS, ExpressJS, GraphQL, Apollo Server, lodash
 
 # Installation steps:
 

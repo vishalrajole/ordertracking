@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { GET_ORDERS } from "./queries";
 import Loading from "../../components/Loading";
@@ -28,7 +28,7 @@ const Trackings = () => {
   const history = useHistory();
 
   const { loading, error, data } = useQuery(GET_ORDERS, {
-    variables: { email: localStorage.getItem("email") },
+    variables: { email: localStorage.getItem("email") }, // temporary solution
   });
 
   if (error) return <p>Error :(</p>;
@@ -48,7 +48,7 @@ const Trackings = () => {
           {!data.getAllOrders.length && (
             <div>
               Apologize, we didn't find any order for given email. Please use
-              same email used while ordering a product
+              same email used while ordering a product.
             </div>
           )}
           {error && (
@@ -81,7 +81,9 @@ const Trackings = () => {
               <GroupWrapper>
                 <Label>Delivery Address</Label>
                 <Value>
-                  {`${tracking.street} ${tracking.zip_code} ${tracking.city}`}
+                  {`${tracking.street}`}
+                  <br />
+                  {`${tracking.zip_code} ${tracking.city}`}
                 </Value>
               </GroupWrapper>
             </Card>

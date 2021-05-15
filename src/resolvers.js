@@ -45,8 +45,7 @@ const resolvers = {
   Mutation: {
     login: async (root, args, {}) => {
       try {
-        console.log("args.email: ", args.email);
-        const length = 6; // TODO hard coded token
+        const length = 6; // intentionlly hard coded token, jwt would be better in case we want to habdle auth
         const token = Math.floor(
           Math.pow(10, length - 1) +
             Math.random() *

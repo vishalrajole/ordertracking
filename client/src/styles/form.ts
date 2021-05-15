@@ -8,6 +8,7 @@ export const Form = styled.form`
 export const Label = styled.label`
   font-size: 14px;
   margin-bottom: 8px;
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Value = styled.span`
@@ -17,10 +18,10 @@ export const Value = styled.span`
 export const GroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 `;
 
 export const ErrorText = styled.p`
-  color: red;
+  color: ${({ theme }) => theme.colors.error};
   margin: 0;
 `;

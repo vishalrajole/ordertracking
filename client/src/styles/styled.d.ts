@@ -4,10 +4,11 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     borderRadius: string;
-
+    fontSize: string;
     colors: {
       main: string;
       secondary: string;
+      error: string;
     };
   }
 }

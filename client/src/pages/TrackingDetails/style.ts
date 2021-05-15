@@ -15,7 +15,7 @@ export const Article = styled.div`
 
 export const Quantity = styled.span`
   font-size: 14px;
-  color: #787878;
+  color: ${({ theme }) => theme.colors.secondary}; ;
 `;
 
 export const ArticleInfo = styled.div`
@@ -26,5 +26,10 @@ export const ArticleInfo = styled.div`
 export const ArticleNo = styled.div`
   margin-top: 8px;
   font-size: 12px;
-  color: #787878;
+  color: ${({ theme }) => theme.colors.secondary};
+`;
+
+export const SubText = styled.p`
+  font-size: 14px;
+  margin: 5px 0;
 `;

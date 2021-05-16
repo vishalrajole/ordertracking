@@ -1,14 +1,14 @@
 import express from "express";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+import path from "path";
 import cors from "cors";
 // Bring in GraphQL-Express middleware
 import { ApolloServer } from "apollo-server-express";
 
-import { typeDefs } from "./schema.js";
-import { resolvers } from "./resolvers.js";
+import { typeDefs } from "./src/schema.js";
+import { resolvers } from "./src/resolvers.js";
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname); // hack or workaround for heroku and path es6 module
+const __dirname = path.dirname(new URL(import.meta.url).pathname); // workaround for heroku and path es6 module
+const port = process.env.PORT || 4000;
 async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs,
@@ -24,15 +24,14 @@ async function startApolloServer() {
     app.use(express.static("client/build"));
 
     app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+      console.log("__dirname: ", __dirname);
+      res.sendFile(path.join(__dirname, "client", "build", "index.html"));
     });
   }
 
-  await new Promise((resolve) =>
-    app.listen({ port: process.env.PORT || 4000 }, resolve)
-  );
+  await new Promise((resolve) => app.listen({ port: port }, resolve));
   console.log(
-    `🚀 Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`
+    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
   );
   return { server, app };
 }

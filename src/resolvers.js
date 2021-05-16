@@ -13,14 +13,14 @@ const resolvers = {
       try {
         let filteredTrackings = [];
         const { email, tracking_number } = args;
-        const trackingsData = await readFile("../mocks/trackings.csv").catch(
+        const trackingsData = await readFile("./mocks/trackings.csv").catch(
           (err) => console.error("Failed to read file", err)
         );
         const trackings = await neatCsv(trackingsData, { separator: ";" });
 
-        const checkpointsData = await readFile(
-          "../mocks/checkpoints.csv"
-        ).catch((err) => console.error("Failed to read file", err));
+        const checkpointsData = await readFile("./mocks/checkpoints.csv").catch(
+          (err) => console.error("Failed to read file", err)
+        );
 
         const checkpoints = await neatCsv(checkpointsData, { separator: ";" });
 

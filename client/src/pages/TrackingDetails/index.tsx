@@ -40,22 +40,25 @@ const TrackingDetails = () => {
   return (
     <Card toBack={"/trackings"}>
       {loading ? (
-        <Loading message="Loading order details" />
+        <Loading
+          dataTestId="order-details-loading"
+          message="Loading order details"
+        />
       ) : (
         <>
           {error && (
-            <div>
+            <div data-testid="order-details-error-message">
               Apologize, Something went wrong. We didn't fetch orders for given
               email.
             </div>
           )}
           {tracking.orderNo ? (
             <GroupWrapper>
-              <Label>Order Number</Label>
+              <Label data-testid="order-number">Order Number</Label>
               <Value> {tracking.orderNo}</Value>
             </GroupWrapper>
           ) : (
-            <div>
+            <div data-testid="no-order-details-message">
               Apologize, Something went wrong. We couldn't fetch order details
               for given tracking number.
             </div>
@@ -75,11 +78,11 @@ const TrackingDetails = () => {
           {tracking?.trackings?.tracking_number && (
             <Card isSmall={true}>
               <GroupWrapper>
-                <Label>Tracking Number</Label>
+                <Label data-testid="tracking-number">Tracking Number</Label>
                 <Value>{tracking?.trackings?.tracking_number}</Value>
               </GroupWrapper>
               <GroupWrapper>
-                <Label>Current Status</Label>
+                <Label data-testid="order-status">Current Status</Label>
                 <Value>
                   {tracking?.trackings?.deliveryStatus[0]?.status_text}
                 </Value>
@@ -92,7 +95,7 @@ const TrackingDetails = () => {
 
           {articles.length > 0 && (
             <Card isSmall={true}>
-              <Label> Articles </Label>
+              <Label data-testid="order-articles"> Articles </Label>
 
               {articles.map((article: ArticleInterface) => (
                 <>

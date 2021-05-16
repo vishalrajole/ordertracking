@@ -27,7 +27,8 @@ const Trackings = () => {
   const history = useHistory();
 
   const { loading, error, data } = useQuery(GET_ORDERS, {
-    variables: { email: localStorage.getItem("email") }, // temporary solution
+    // temporary using localstorage to pass email id, token authentication is alternate better approach
+    variables: { email: localStorage.getItem("email") },
   });
 
   const goToTrackingDetails = (tracking_number: string) => {

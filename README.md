@@ -29,3 +29,10 @@
 - make sure you are at root of the project and use `npm run dev` to start local server
 - visit `http://localhost:3000/` for client(UI) and
 - visit `http://localhost:4000/graphql` for graphql interface
+
+
+# Screenshots
+<img width="488" alt="Screenshot 2021-05-15 at 11 43 14 PM" src="https://user-images.githubusercontent.com/4668780/118387864-1fe1cd80-b621-11eb-89fa-d28522a3fe05.png">
+<img width="515" alt="Screenshot 2021-05-15 at 11 43 49 PM" src="https://user-images.githubusercontent.com/4668780/118387866-207a6400-b621-11eb-81e2-01de6ba770ec.png">
+<img width="437" alt="Screenshot 2021-05-15 at 11 44 08 PM" src="https://user-images.githubusercontent.com/4668780/118387867-207a6400-b621-11eb-8c42-c63cdd523beb.png">
+<img width="466" alt="Screenshot 2021-05-15 at 11 44 33 PM" src="https://user-images.githubusercontent.com/4668780/118387869-2112fa80-b621-11eb-9413-e7dd99ff78ed.png">

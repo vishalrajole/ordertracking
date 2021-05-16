@@ -7,9 +7,17 @@ type Props = {
   value: string;
   pattern?: string;
   required?: boolean;
+  dataTestId?: string;
 };
 
-const Input = ({ placeholder, type, value, required, onChange }: Props) => {
+const Input = ({
+  placeholder,
+  type,
+  value,
+  required,
+  dataTestId,
+  onChange,
+}: Props) => {
   return (
     <StyledInput
       type={type}
@@ -17,6 +25,7 @@ const Input = ({ placeholder, type, value, required, onChange }: Props) => {
       placeholder={placeholder}
       onChange={onChange}
       required={required}
+      data-testid={dataTestId}
     />
   );
 };

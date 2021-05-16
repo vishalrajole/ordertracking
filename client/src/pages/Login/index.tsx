@@ -49,19 +49,27 @@ const Login: FunctionComponent = () => {
   };
 
   return (
-    <Card title="Please enter your email address to see your recent orders">
+    <Card
+      title="Please enter your email address to see your recent orders"
+      data-testid="login-title"
+    >
       <Form>
-        <Label>Email</Label>
+        <Label data-testid="email-label">Email</Label>
         <Input
           type="text"
           value={email}
           placeholder="Eg. test@gmail.com"
           onChange={onEmailChange}
           required={true}
+          dataTestId="email-input"
         />
-        {error && <ErrorText>{error}</ErrorText>}
+        {error && <ErrorText data-testid="email-error">{error}</ErrorText>}
 
-        <Button disabled={isDisabled} onClick={onSubmit}>
+        <Button
+          disabled={isDisabled}
+          onClick={onSubmit}
+          dataTestId="login-send"
+        >
           Send
         </Button>
       </Form>

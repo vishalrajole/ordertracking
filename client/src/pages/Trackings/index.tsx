@@ -40,22 +40,22 @@ const Trackings = () => {
   return (
     <Card title={getTitle()} toBack={"/login"}>
       {loading ? (
-        <Loading message="Loading orders" />
+        <Loading dataTestId="order-loading" message="Loading orders" />
       ) : (
         <>
-          {!data.getAllOrders.length && (
-            <div>
+          {!data?.getAllOrders.length && !error && (
+            <div data-testid="no-orders-message">
               Apologize, we didn't find any order for given email. Please use
               same email used while ordering a product.
             </div>
           )}
           {error && (
-            <div>
+            <div data-testid="orders-error-message">
               Apologize, Something went wrong. We didn't fetch orders for given
               email.
             </div>
           )}
-          {data.getAllOrders.map((tracking: TrackingInterface) => (
+          {data?.getAllOrders.map((tracking: TrackingInterface) => (
             <Card
               isClickable={true}
               isSmall={true}
@@ -66,7 +66,7 @@ const Trackings = () => {
             >
               <GridCol2>
                 <GroupWrapper>
-                  <Label>Order Number</Label>
+                  <Label data-testid="order-number">Order Number</Label>
                   <Value> {tracking.orderNo}</Value>
                 </GroupWrapper>
                 <GroupWrapper>

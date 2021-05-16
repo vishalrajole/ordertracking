@@ -9,7 +9,7 @@ import Trackings from "./pages/Trackings";
 import TrackingDetails from "./pages/TrackingDetails";
 import Login from "./pages/Login";
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache(),
 });

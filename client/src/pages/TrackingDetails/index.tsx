@@ -31,8 +31,11 @@ const TrackingDetails = () => {
     variables: { tracking_number },
   });
 
-  const tracking = data?.getAllOrders[0];
-  const articles = data?.getAllOrders[0].trackings?.articles;
+  const tracking = data?.getAllOrders[0] || [];
+  let articles = [];
+  if (tracking) {
+    articles = data?.getAllOrders[0]?.trackings?.articles || [];
+  }
 
   return (
     <Card toBack={"/trackings"}>
@@ -46,55 +49,79 @@ const TrackingDetails = () => {
               email.
             </div>
           )}
-          <GroupWrapper>
-            <Label>Order Number</Label>
-            <Value> {tracking.orderNo}</Value>
-          </GroupWrapper>
-          <GroupWrapper>
-            <Label>Delivery Address</Label>
-            <Value>
-              {`${tracking.street}`}
-              <br />
-              {`${tracking.zip_code} ${tracking.city}`}
-            </Value>
-          </GroupWrapper>
-          <Card isSmall={true}>
+          {tracking.orderNo ? (
             <GroupWrapper>
-              <Label>Tracking Number</Label>
-              <Value>{tracking?.trackings?.tracking_number}</Value>
+              <Label>Order Number</Label>
+              <Value> {tracking.orderNo}</Value>
             </GroupWrapper>
+          ) : (
+            <div>
+              Apologize, Something went wrong. We couldn't fetch order details
+              for given tracking number.
+            </div>
+          )}
+
+          {tracking.street && (
             <GroupWrapper>
-              <Label>Current Status</Label>
+              <Label>Delivery Address</Label>
               <Value>
-                {tracking?.trackings?.deliveryStatus[0]?.status_text}
+                {`${tracking.street}`}
+                <br />
+                {`${tracking.zip_code} ${tracking.city}`}
               </Value>
-              <SubText>
-                {tracking?.trackings?.deliveryStatus[0]?.status_details}
-              </SubText>
             </GroupWrapper>
-          </Card>
-          {articles.length && (
+          )}
+
+          {tracking?.trackings?.tracking_number && (
+            <Card isSmall={true}>
+              <GroupWrapper>
+                <Label>Tracking Number</Label>
+                <Value>{tracking?.trackings?.tracking_number}</Value>
+              </GroupWrapper>
+              <GroupWrapper>
+                <Label>Current Status</Label>
+                <Value>
+                  {tracking?.trackings?.deliveryStatus[0]?.status_text}
+                </Value>
+                <SubText>
+                  {tracking?.trackings?.deliveryStatus[0]?.status_details}
+                </SubText>
+              </GroupWrapper>
+            </Card>
+          )}
+
+          {articles.length > 0 && (
             <Card isSmall={true}>
               <Label> Articles </Label>
 
               {articles.map((article: ArticleInterface) => (
-                <Article key={article.articleNo}>
-                  {article.quantity && (
-                    <Quantity>{`x${article.quantity}`}</Quantity>
+                <>
+                  {/* handled corner case when articls dont have all data required for given tracking number */}
+                  {article.articleNo ? (
+                    <Article key={article.articleNo}>
+                      {article.quantity && (
+                        <Quantity>{`x${article.quantity}`}</Quantity>
+                      )}
+                      {article.articleImageUrl && (
+                        <Image
+                          src={article.articleImageUrl}
+                          alt={article.product_name}
+                        />
+                      )}
+                      {article.product_name && (
+                        <ArticleInfo>
+                          {article.product_name}
+                          <ArticleNo>{article.articleNo}</ArticleNo>
+                        </ArticleInfo>
+                      )}
+                    </Article>
+                  ) : (
+                    <div>
+                      Apologize, Something went wrong. We couldn't fetch
+                      articles for given tracking number.
+                    </div>
                   )}
-                  {article.articleImageUrl && (
-                    <Image
-                      src={article.articleImageUrl}
-                      alt={article.product_name}
-                    />
-                  )}
-                  {article.product_name && (
-                    <ArticleInfo>
-                      {article.product_name}
-                      <ArticleNo>{article.articleNo}</ArticleNo>
-                    </ArticleInfo>
-                  )}
-                </Article>
+                </>
               ))}
             </Card>
           )}

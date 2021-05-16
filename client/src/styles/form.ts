@@ -1,3 +1,4 @@
+// Shared form style across screens
 import styled from "styled-components";
 
 export const Form = styled.form`

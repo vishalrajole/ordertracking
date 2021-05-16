@@ -1,3 +1,4 @@
+// Theme which can be extended for all style constants like typography/spacing/color pallette etc
 import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {

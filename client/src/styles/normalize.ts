@@ -16,5 +16,4 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-// font-size: ${(props) => props.theme.typography.BASE_FONT_SIZE};
 export default GlobalStyle;

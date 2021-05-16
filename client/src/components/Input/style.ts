@@ -15,7 +15,5 @@ export const StyledInput = styled.input`
     border: none;
     outline: none;
   }
- 
- 
 }
 `;

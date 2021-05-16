@@ -30,11 +30,10 @@ const Trackings = () => {
     variables: { email: localStorage.getItem("email") }, // temporary solution
   });
 
-  if (error) return <p>Error :(</p>;
-
   const goToTrackingDetails = (tracking_number: string) => {
     history.push(`/tracking-details/${tracking_number}`);
   };
+
   const getTitle = () =>
     data?.getAllOrders.length ? "Your Orders" : "No Orders";
 

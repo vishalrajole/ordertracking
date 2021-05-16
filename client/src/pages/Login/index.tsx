@@ -1,18 +1,19 @@
 import { useState, FunctionComponent, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
-import { Form, Label, ErrorText } from "../../styles/form";
+
+import { LOGIN_MUTATION } from "./queries";
 import EmailValidator from "../../utils/EmailValidator";
 import Card from "../../components/Card";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import { LOGIN_MUTATION } from "./queries";
+import { Form, Label, ErrorText } from "../../styles/form";
 
 const Login: FunctionComponent = () => {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>("");
   const [isDisabled, setIsDisabled] = useState(true);
-  const history = useHistory();
 
   const [login, result] = useMutation(LOGIN_MUTATION, {
     onError: () => {},

@@ -3,9 +3,9 @@ import { groupBy, values, flatten, filter } from "lodash-es";
 /***
  * plug trackings into checkpoints to generate object with following format
  * { orderNo, courier, street, zip_code, city, trackings:{ tracking_number, deliveryStatus:{}, articles:{}}}
- * this will ensure in future one order can have multiple trackings
+ * this will ensure in future one order can have multiple trackings and attached trackings with its articles and delivery status (sorted in desc order) as well.
  *
- * At last, we sorting trackings with date in desc order
+ *
  */
 export const formatTrackings = (checkpoints, trackings) => {
   const groupedCheckpoints = groupBy(checkpoints, "tracking_number");

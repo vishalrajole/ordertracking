@@ -12,17 +12,20 @@
   - [x] server which serves order details from csv file
   - [x] that parses and processes the provided CSV files' content
   - [x] that serves content to the frontend via created endpoint(s) in a format(GraphQL)
+  - [x] Continuous Deployment(CD) is setup for `master` branch with Heroku and Github
+  - [x] app deployed on Heroku at https://ecommerce-order-tracking.herokuapp.com/login
 
 # Tech stack
 
 - Frontend: React, typescript, styled-components, react-router
 - Backend: NodeJS, ExpressJS, GraphQL, Apollo Server, lodash
+- Deployment: Heroku, Github CD
 
 # Installation steps:
 
 - run `git clone git@github.com:vishalrajole/ordertracking.git` to clone the repo
 - inside cloned repo folder, run `npm install` to install server dependencies
 - inside `client` folder, run `npm install` to install client dependencies
-- use `npm run dev` to start local server
-- visit `http://localhost:3000/` for client and
+- make sure you are at root of the project and use `npm run dev` to start local server
+- visit `http://localhost:3000/` for client(UI) and
 - visit `http://localhost:4000/graphql` for graphql interface

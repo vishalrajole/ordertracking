@@ -14,6 +14,7 @@
   - [x] that serves content to the frontend via created endpoint(s) in a format(GraphQL)
   - [x] Continuous Deployment(CD) is setup for `master` branch with Heroku and Github
   - [x] app deployed on Heroku at https://ecommerce-order-tracking.herokuapp.com/login
+  - [x] use `test@success.com` to see order list
 
 # Tech stack
 
@@ -32,7 +33,8 @@
 
 
 # Screenshots
-<img width="488" alt="Screenshot 2021-05-15 at 11 43 14 PM" src="https://user-images.githubusercontent.com/4668780/118387864-1fe1cd80-b621-11eb-89fa-d28522a3fe05.png">
-<img width="515" alt="Screenshot 2021-05-15 at 11 43 49 PM" src="https://user-images.githubusercontent.com/4668780/118387866-207a6400-b621-11eb-81e2-01de6ba770ec.png">
-<img width="437" alt="Screenshot 2021-05-15 at 11 44 08 PM" src="https://user-images.githubusercontent.com/4668780/118387867-207a6400-b621-11eb-8c42-c63cdd523beb.png">
-<img width="466" alt="Screenshot 2021-05-15 at 11 44 33 PM" src="https://user-images.githubusercontent.com/4668780/118387869-2112fa80-b621-11eb-9413-e7dd99ff78ed.png">
+<img width="448" alt="Screenshot 2021-06-05 at 8 26 00 PM" src="https://user-images.githubusercontent.com/4668780/120901961-f6272f80-c63d-11eb-810a-7072c2b44eb6.png">
+<img width="396" alt="Screenshot 2021-06-05 at 8 26 26 PM" src="https://user-images.githubusercontent.com/4668780/120901962-f6bfc600-c63d-11eb-8f0f-5ae6e93296d7.png">
+<img width="440" alt="Screenshot 2021-06-05 at 8 37 01 PM" src="https://user-images.githubusercontent.com/4668780/120901963-f7585c80-c63d-11eb-9e11-15a2d56c6dce.png">
+<img width="452" alt="Screenshot 2021-06-05 at 8 37 53 PM" src="https://user-images.githubusercontent.com/4668780/120901964-f7f0f300-c63d-11eb-970e-e9b2e91c502a.png">
+

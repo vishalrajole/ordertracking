@@ -8,7 +8,7 @@ import { GET_ORDERS } from "./queries";
 afterEach(cleanup);
 
 beforeEach(() => {
-  localStorage.setItem("email", "julian@parcellab.com");
+  localStorage.setItem("email", "test@success.com");
 });
 
 describe("<Trackings />", () => {

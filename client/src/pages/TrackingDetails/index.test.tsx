@@ -41,7 +41,7 @@ describe("<TrackingDetails />", () => {
                     {
                       articleNo: "A-B2-U",
                       quantity: "1",
-                      product_name: "parcelLab Tote Bag",
+                      product_name: "Tote Bag",
                       articleImageUrl:
                         "http://cdn.parcellab.com/img/sales-cannon/parcellab-bag.jpg",
                     },

@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
 import { ThemeProvider } from "styled-components";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 
 import theme from "./styles/theme";
 import GlobalStyle from "./styles/normalize";
@@ -21,15 +21,15 @@ function App() {
         <ApolloProvider client={client}>
           <GlobalStyle />
           <BrowserRouter>
-            <Switch>
-              <Route exact path="/" render={() => <Redirect to="/login" />} />
-              <Route path="/login" component={Login} />
-              <Route path="/trackings" component={Trackings} />
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/trackings" element={<Trackings />} />
               <Route
                 path="/tracking-details/:tracking_number"
-                component={TrackingDetails}
+                element={<TrackingDetails />}
               />
-            </Switch>
+              <Route path="*" element={<Navigate to="/login" replace />} />
+            </Routes>
           </BrowserRouter>
         </ApolloProvider>
       </ThemeProvider>

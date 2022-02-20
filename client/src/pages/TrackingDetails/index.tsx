@@ -21,6 +21,7 @@ interface ArticleInterface {
   articleImageUrl: string;
 }
 interface RouteParams {
+  [key: string]: string;
   tracking_number: string;
 }
 

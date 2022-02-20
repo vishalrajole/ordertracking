@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { GET_ORDERS } from "./queries";
 import Loading from "../../components/Loading";
@@ -24,7 +24,7 @@ interface TrackingInterface {
 }
 
 const Trackings = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_ORDERS, {
     // temporary using localstorage to pass email id, token authentication is alternate better approach
@@ -32,7 +32,7 @@ const Trackings = () => {
   });
 
   const goToTrackingDetails = (tracking_number: string) => {
-    history.push(`/tracking-details/${tracking_number}`);
+    navigate(`/tracking-details/${tracking_number}`);
   };
 
   const getTitle = () =>

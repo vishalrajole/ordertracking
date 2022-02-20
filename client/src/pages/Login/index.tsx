@@ -1,6 +1,6 @@
 import { useState, FunctionComponent, useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { LOGIN_MUTATION } from "./queries";
 import EmailValidator from "../../utils/EmailValidator";
@@ -10,7 +10,7 @@ import Input from "../../components/Input";
 import { Form, Label, ErrorText } from "../../styles/form";
 
 const Login: FunctionComponent = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>("");
   const [isDisabled, setIsDisabled] = useState(true);
@@ -24,7 +24,7 @@ const Login: FunctionComponent = () => {
       const token = result.data.login.token;
       localStorage.setItem("token", token); // temporarily storing email into localstorage
       localStorage.setItem("email", email);
-      history.push("/trackings");
+      navigate("/trackings");
     }
   }, [result.data]);
 

@@ -6,7 +6,7 @@ import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./src/schema.js";
 import { resolvers } from "./src/resolvers.js";
 
-// workaround for heroku and path for es6 module https://techsparx.com/nodejs/esnext/dirname-es-modules.html
+// workaround for heroku and path es6 module https://techsparx.com/nodejs/esnext/dirname-es-modules.html
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const port = process.env.PORT || 4000;
 

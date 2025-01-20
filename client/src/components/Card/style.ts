@@ -27,5 +27,5 @@ export const Container = styled.div<ContainerProps>`
 export const Title = styled.div`
   font-size: 18px;
   margin-bottom: 24px;
-  color: ${({ theme }) => theme.colors.main}; ;
+  color: ${({ theme }) => theme.colors.main};
 `;
